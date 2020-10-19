@@ -102,9 +102,17 @@ div {
 }
 
 #bgVideo {
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    left: 50%;
     position: fixed;
-    left: -10%;
-    bottom: 0;    
     min-height: 100%;
     min-width: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
 }
