@@ -1,9 +1,5 @@
 @charset "utf-8";
 
-@font-face {
-    font-family: roboto;
-    src:url("Roboto-Regular.ttf");
-}
 /* CSS Document */
 
 a {
@@ -32,7 +28,7 @@ body{
     padding: 0;
     color: black; 
     font-size: 10pt; 
-    font-family: "roboto", sans-serif;
+    font-family: "Roboto-Regular", sans-serif;
     background-color: #ffffff;
     
     width: 100%;
