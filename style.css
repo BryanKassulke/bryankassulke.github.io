@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+    margin-left: 0px; 
+    margin-right: 0px;
+    padding: 0;
+    color: black; 
+    font-size: 10pt; 
+    font-family: "Trebuchet MS", sans-serif;
+    background-color: #ffffff;
+}
+
+div {
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+div.title {
+    font-size: 20pt; 
+}
+
+div.navbar {
+    font-size: 10pt; 
+}
+
+div.content {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+div.footer {
+    align-items: center;
+}
