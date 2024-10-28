@@ -10,5 +10,12 @@
   },
   "devDependencies": {
     "vite": "^5.4.9"
+  },
+  "dependencies": {
+    "three": "^0.169.0"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false
   }
 }
