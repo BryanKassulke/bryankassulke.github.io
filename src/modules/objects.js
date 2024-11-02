@@ -17,7 +17,7 @@ for (let i = roomStart.x; i <= roomEnd.x; i += roomTileSize) {
   for (let j = roomStart.z; j <= roomEnd.z; j += roomTileSize) {
     const tile = new THREE.Mesh(
       new THREE.BoxGeometry(roomTileSize, roomFloorThickness, roomTileSize),
-      new THREE.MeshBasicMaterial({
+      new THREE.MeshPhongMaterial({
         color: 0x907060,
         wireframe: false,
       })
@@ -34,7 +34,7 @@ for (let i = roomStart.z; i <= roomEnd.z; i += roomTileSize) {
   for (let j = roomStart.y; j <= roomEnd.y; j += roomTileSize) {
     const tile = new THREE.Mesh(
       new THREE.PlaneGeometry(roomTileSize, roomTileSize),
-      new THREE.MeshBasicMaterial({
+      new THREE.MeshPhongMaterial({
         color: 0xb0b0a0,
         wireframe: false,
       })
@@ -52,7 +52,7 @@ for (let i = roomStart.x; i <= roomEnd.x; i += roomTileSize) {
   for (let j = roomStart.y; j <= roomEnd.y; j += roomTileSize) {
     const tile = new THREE.Mesh(
       new THREE.PlaneGeometry(roomTileSize, roomTileSize),
-      new THREE.MeshBasicMaterial({
+      new THREE.MeshPhongMaterial({
         color: 0xb0b0a0,
         wireframe: false,
       })
@@ -64,13 +64,14 @@ for (let i = roomStart.x; i <= roomEnd.x; i += roomTileSize) {
 
 /** @type {THREE.Mesh[]} */
 export const windows = [];
+
 const windowSize = new THREE.Vector3(1.25, 1.5, 0.025);
 const windowDistanceFromWall = 1.25;
 for (let i = 0; i <= 1; i++) {
   const window = new THREE.Mesh(
     new THREE.BoxGeometry(...windowSize),
-    new THREE.MeshBasicMaterial({
-      color: 0xffffff,
+    new THREE.MeshPhongMaterial({
+      color: 0xdddddd,
       wireframe: false,
     })
   );
@@ -82,3 +83,23 @@ windows[0].position.x =
   roomStart.x - roomTileSize / 2 + windowSize.x / 2 + windowDistanceFromWall;
 windows[1].position.x =
   roomEnd.x + roomTileSize / 2 - windowSize.x / 2 - windowDistanceFromWall;
+
+/** @type {THREE.Mesh[]} */
+export const desk = [];
+
+const deskTopSize = new THREE.Vector3(0.8, 0.025, 1.5);
+const offsetFromCorner = new THREE.Vector3(0.5, 0.8, 0.2);
+const top = new THREE.Mesh(
+  new THREE.BoxGeometry(...deskTopSize),
+  new THREE.MeshPhongMaterial({
+    color: 0xdddddd,
+    wireframe: false,
+  })
+);
+top.position.set(
+  roomStart.x - roomTileSize / 2 + deskTopSize.x / 2,
+  roomStart.y + deskTopSize.y / 2,
+  roomStart.z - roomTileSize / 2 + deskTopSize.z / 2
+);
+top.position.add(offsetFromCorner);
+desk.push(top);
