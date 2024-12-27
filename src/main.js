@@ -1,9 +1,11 @@
 import * as THREE from "three";
-import { debug, roomPosition, roomTileSize } from "./modules/constants";
-import { scene, camera, orbitControls, renderer, clock } from "./modules/scene";
-import { StateMachine } from "./modules/state-machine";
-import IntroState from "./modules/states/intro-state";
-import SceneState from "./modules/states/scene-state";
+import { debug, roomPosition, roomTileSize } from "./modules/constants.js";
+import { scene, camera, orbitControls, renderer, clock } from "./modules/scene.js";
+import { StateMachine } from "./modules/state-machine.js";
+import LoadState from "./modules/states/load-state.js";
+import SceneState from "./modules/states/scene-state.js";
+
+import sceneUrl from "./assets/scene.glb";
 
 if (debug) {
   const axisHelper = new THREE.AxesHelper(10);
@@ -16,14 +18,14 @@ if (debug) {
 }
 
 const gameStateMachine = new StateMachine();
-const introState = new IntroState();
+const loadState = new LoadState([sceneUrl]);
 const sceneState = new SceneState();
 gameStateMachine.addTransition(
-  introState,
+  loadState,
   sceneState,
-  () => clock.getElapsedTime() > 5
+  loadState.isComplete
 );
-gameStateMachine.setState(introState);
+gameStateMachine.setState(loadState);
 
 function animate() {
   gameStateMachine.update();
